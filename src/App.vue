@@ -23,7 +23,7 @@ export default {
   },
   async created () {
     this.getScatter()
-    this.getGeolocation()
+    // this.getGeolocation()
   }
 }
 </script>
@@ -40,5 +40,11 @@ export default {
 #router-view {
   width: 85%;
   margin: 1rem auto;
+}
+.title {
+  font-size: 4rem;
+}
+.subtitle {
+  font-size: 2.5rem;
 }
 </style>
