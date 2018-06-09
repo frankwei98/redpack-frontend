@@ -5,9 +5,9 @@
  mode="horizontal"
  @select="handleSelect"
  router>
-  <el-menu-item index="/"> eos Lucky Money </el-menu-item>
+  <el-menu-item index="/"> eos Red Pack </el-menu-item>
   <el-menu-item index="/home"> Home </el-menu-item>
-  <el-menu-item index="/send"> Send Lucky Money </el-menu-item>
+  <el-menu-item index="/send"> Send Red Pack </el-menu-item>
   <el-menu-item index="/map"> Maps </el-menu-item>
 </el-menu>
 </template>

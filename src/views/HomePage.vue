@@ -1,6 +1,6 @@
 <template>
     <div id="home">
-        <h1 class="title">eos Lucky Money</h1>
+        <h1 class="title">eos Red Pack</h1>
         <h2 class="subtitle">
           You can send lucky money to your <span class="changeTag">{{displayKins}}</span>
         </h2>

@@ -1,6 +1,6 @@
 <template>
     <el-footer>
-        eos LBS Lucky Money
+        eos LBS Red Pack
         <br>
         Andoromeda Foundation All Right Reserved.
     </el-footer>

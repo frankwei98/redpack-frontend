@@ -1,7 +1,7 @@
 <template>
     <div id="send-ok">
         <h1 class="title"> Transacation Successful </h1>
-        <h2 class="subtitle"> Share this Lucky Money page to your friends, collegues and customers now.</h2>
+        <h2 class="subtitle"> Share this Red Pack page to your friends, collegues and customers now.</h2>
     </div>
 </template>
 
