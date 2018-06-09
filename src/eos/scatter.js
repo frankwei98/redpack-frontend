@@ -5,6 +5,8 @@ export const getScatterInstance = () => new Promise((resolve, reject) => {
     // already encrypted.
     if (window.scatter) {
       resolve(window.scatter)
+    } else {
+      reject(new Error('No Scatter'))
     }
   })
 })

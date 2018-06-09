@@ -1,3 +1,4 @@
 export default () => ({
-  scatter: null
+  scatter: null,
+  location: null
 })
