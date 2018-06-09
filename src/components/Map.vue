@@ -1,10 +1,20 @@
 <template>
-    <el-amap ref="map" vid="amapDemo"
+  <div id="map">
+        <el-amap ref="map" vid="amapDemo"
+        v-if="isAMap"
     :amap-manager="amapManager"
     :center="center" :zoom="zoom"
     :plugin="plugin" :events="events"
-    class="map">
-      </el-amap>
+    class="map"></el-amap>
+      <GmapMap
+      v-if="isGoogle"
+        :center="getCoordinate"
+        :zoom="zoom"
+        map-type-id="roadmap"
+        class="map"
+        />
+  </div>
+
 </template>
 
 <script>
@@ -13,12 +23,25 @@ export default {
   props: {
     zoom: Number,
     center: Array,
-    height: Number
+    mapProvider: {
+      type: String,
+      default: 'google'
+    }
   },
   computed: {
     getHeight () {
       const height = this.height || 300
       return `height: ${height}`
+    },
+    getCoordinate () {
+      const {center} = this
+      return {lat: center[1], lng: center[0]}
+    },
+    isAMap () {
+      return this.mapProvider === 'amap'
+    },
+    isGoogle () {
+      return this.mapProvider === 'google'
     }
   },
   name: 'Map',
