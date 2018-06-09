@@ -1,9 +1,9 @@
 <template>
     <div id="home">
-        <h1>EOS Lucky</h1>
-        <h2>Tokens for LUCKY</h2>
-        <h1> You can send lucky money to your</h1>
-        <h1> {{displayKins}} </h1>
+        <h1 class="title">eos Lucky Money</h1>
+        <h2 class="subtitle">
+          You can send lucky money to your <span class="changeTag">{{displayKins}}</span>
+        </h2>
         <el-button type="primary" @click="jumpTo('Send')"> Send Now </el-button>
     </div>
 </template>
@@ -39,4 +39,14 @@ export default {
 </script>
 
 <style scoped>
+.changeTag {
+  background: #303133;
+  color: #F2F6FC;
+}
+.title {
+  font-size: 4rem;
+}
+.subtitle {
+  font-size: 2.5rem;
+}
 </style>

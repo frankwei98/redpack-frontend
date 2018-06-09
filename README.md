@@ -1,6 +1,6 @@
 # lbs-eos-redpack
 
-> EOS Lucky Redpack
+> eos Lucky Redpack
 
 ## Build Setup
 
