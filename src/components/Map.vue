@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import { amapManager } from 'vue-amap'
+// import { amapManager } from 'vue-amap'
 import { mapState } from 'vuex'
 export default {
   props: {
@@ -68,9 +68,6 @@ export default {
   methods: {
     getMap () {
       // amap vue component
-      console.log(amapManager._componentMap)
-      // gaode map instance
-      console.log(amapManager._map)
     },
     clickRedPack (params) {
       console.log(params)
