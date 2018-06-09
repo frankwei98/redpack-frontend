@@ -6,6 +6,7 @@ import LBSMap from '@/views/LBSMap'
 import Claim from '@/views/ClaimLuckyMoney'
 import SendOK from '@/views/SendOK'
 import SignIn from '@/views/SignIn'
+import My from '@/views/My'
 
 Vue.use(Router)
 
@@ -44,6 +45,11 @@ export default new Router({
       path: '/signin',
       name: 'SignIn',
       component: SignIn
+    },
+    {
+      path: '/my',
+      name: 'My',
+      component: My
     }
   ]
 })

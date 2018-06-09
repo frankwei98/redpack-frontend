@@ -1,5 +1,11 @@
 <template>
   <div id="map">
+      <div class="notify" v-if="!location">
+        <h1 class="title">Please enable geolocation setting for Maps</h1>
+        <h2 class="subtitle"> For LBS red pack, we will need your geolocation info.
+          <br> Please authorize the permission</h2>
+        <el-button type="primary" @click="fetchLocation"> Authorize Geolocation Permission </el-button>
+      </div>
       <GmapMap
       v-if="isGoogle && location"
         :center="getCoordinate"
@@ -20,7 +26,7 @@
 
 <script>
 // import { amapManager } from 'vue-amap'
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 export default {
   props: {
     zoom: Number,
@@ -66,8 +72,12 @@ export default {
   data: () => ({}),
 
   methods: {
+    ...mapActions(['getGeolocation']),
     getMap () {
       // amap vue component
+    },
+    fetchLocation () {
+      this.getGeolocation()
     },
     clickRedPack (params) {
       console.log(params)
