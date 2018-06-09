@@ -1,41 +1,59 @@
 <template>
   <div id="map">
-        <el-amap ref="map" vid="amapDemo"
-        v-if="isAMap"
-    :amap-manager="amapManager"
-    :center="center" :zoom="zoom"
-    :plugin="plugin" :events="events"
-    class="map"></el-amap>
       <GmapMap
-      v-if="isGoogle"
+      v-if="isGoogle && location"
         :center="getCoordinate"
         :zoom="zoom"
         map-type-id="roadmap"
-        class="map"
-        />
+        class="map">
+        <GmapMarker v-for="(r,idx) in redpackData"
+          v-bind:key="idx"
+         :position="r.geo" :clickable="true"
+         :draggable="true" @click="clickRedPack(r)"></GmapMarker>
+        <GmapInfoWindow :position="location" :opened="true">
+        You're here nearby.
+      </GmapInfoWindow>
+        </GmapMap>
   </div>
 
 </template>
 
 <script>
 import { amapManager } from 'vue-amap'
+import { mapState } from 'vuex'
 export default {
   props: {
     zoom: Number,
     center: Array,
     mapProvider: {
       type: String,
-      default: 'google'
+      default: 'google',
+      validator: function (value) {
+        // must match any of them
+        return ['google', 'amap'].indexOf(value) !== -1
+      }
+    },
+    redpackData: {
+      type: Array,
+      default: () => []
     }
   },
   computed: {
+    ...mapState({
+      location ({ location }) {
+        return location
+          ? { lat: location.latitude, lng: location.longitude }
+          : null
+      }
+    }),
+
     getHeight () {
       const height = this.height || 300
       return `height: ${height}`
     },
     getCoordinate () {
-      const {center} = this
-      return {lat: center[1], lng: center[0]}
+      const { center } = this
+      return { lat: center[1], lng: center[0] }
     },
     isAMap () {
       return this.mapProvider === 'amap'
@@ -45,37 +63,7 @@ export default {
     }
   },
   name: 'Map',
-  data () {
-    return {
-      amapManager,
-      events: {
-        init: o => {
-          console.log(o.getCenter())
-          console.log(this.$refs.map.$$getInstance())
-          o.getCity(result => {
-            console.log(result)
-          })
-        },
-        moveend: () => {},
-        zoomchange: () => {},
-        click: e => {
-          alert('map clicked')
-        }
-      },
-      plugin: [
-        'ToolBar',
-        {
-          pName: 'MapType',
-          defaultType: 0,
-          events: {
-            init (o) {
-              console.log(o)
-            }
-          }
-        }
-      ]
-    }
-  },
+  data: () => ({}),
 
   methods: {
     getMap () {
@@ -83,16 +71,20 @@ export default {
       console.log(amapManager._componentMap)
       // gaode map instance
       console.log(amapManager._map)
+    },
+    clickRedPack (params) {
+      console.log(params)
+      this.$router.push({ name: 'Claim', params })
     }
   }
 }
 </script>
 
 <style scoped>
-    /* .amap-demo {
+/* .amap-demo {
       height: 300px;
     } */
-    .map {
-        height: 100%
-    }
+.map {
+  height: 100%;
+}
 </style>
