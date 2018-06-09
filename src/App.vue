@@ -19,10 +19,11 @@ export default {
   },
   name: 'App',
   methods: {
-    ...mapActions(['getScatter'])
+    ...mapActions(['getScatter', 'getGeolocation'])
   },
   async created () {
     this.getScatter()
+    this.getGeolocation()
   }
 }
 </script>
