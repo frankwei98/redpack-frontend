@@ -20,6 +20,8 @@
 </template>
 
 <script>
+import { sendMoney } from '@/eos/';
+import { mapState, mapActions } from 'vuex';
 export default {
   name: 'Send',
   data: () => ({
@@ -29,9 +31,26 @@ export default {
       message: ''
     }
   }),
+  computed: {
+    ...mapState(['location'])
+  },
+  async mounted () {
+    this.getGeolocation()
+  },
   methods: {
+    ...mapActions(['getGeolocation']),
     onSubmit () {
       console.log('submit!')
+      const { total, qty, message } = this.form
+      const { latitude, longitude } = this.location
+      sendMoney({
+        total,
+        pplLimit: qty,
+        msg: message,
+        lat: latitude,
+        lng: longitude,
+        radius: 1000
+      })
     }
   }
 }
@@ -39,6 +58,6 @@ export default {
 
 <style scoped>
 .lucky-btn {
-    background: #f5222d
+  background: #f5222d;
 }
 </style>
