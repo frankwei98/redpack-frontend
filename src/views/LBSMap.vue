@@ -39,6 +39,7 @@ export default {
   methods: {
     async fetchData () {
       this.RedPackData = await checkTable()
+      console.log(this.RedPackData)
     }
 
   }

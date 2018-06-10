@@ -64,8 +64,8 @@ export default {
     async onSubmit () {
       console.log('submit!')
       const { total, qty, message } = this.form
-      var { lat, lng } = this.location
-      this.geo = this.location
+      var { lat, lng } = this.geo
+      // this.geo = this.location
       lat = Number(lat).toFixed(7)
       lng = Number(lng).toFixed(7)
       const result = await sendMoney({
@@ -88,6 +88,7 @@ export default {
     initMap () {
       // const { lat, lng } = this.location
       var myLatlng = this.location
+      this.geo = myLatlng
       console.log(myLatlng)
       var map = new window.google.maps.Map(document.getElementById('map'), {
         zoom: 13,
