@@ -1,8 +1,8 @@
 <template>
     <div id="home">
-        <h1 class="title">eos Red Pack</h1>
+        <h1 class="title">eos Red Packet</h1>
         <h2 class="subtitle">
-          You can send red pack with money to your <span class="changeTag">{{displayKins}}</span>
+          You can send red packet with money to your <span class="changeTag">{{displayKins}}</span>
         </h2>
         <el-button type="primary" @click="jumpTo('Send')"> Send Now </el-button>
     </div>
