@@ -18,10 +18,25 @@ const EOSJS_CONFIG = {
 
 let eosjs = eosJS(EOSJS_CONFIG.clientConfig)
 
-export function sendMoney ({total, pplLimit, msg, lat, lng, radius}) {
+export function sendMoney ({ total, pplLimit, msg, lat, lng, radius }) {
   let _sender = accountName
   eosjs.contract(contractName)
     .then((contract) => {
       contract.sent(_sender, total, pplLimit, msg, lat, lng, radius)
+    })
+}
+
+export function claim (id) {
+  eosjs.contract(contractName)
+    .then((contract) => {
+      contract.take(accountName, id)
+    })
+}
+
+export function addwhitelist (redPackageId, target) {
+  let _sender = accountName
+  eosjs.contract(contractName)
+    .then((contract) => {
+      contract.addwhitelist(_sender, redPackageId, target)
     })
 }
