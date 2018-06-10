@@ -2,7 +2,7 @@
     <div id="send">
 <el-form ref="form" :model="form" label-width="80px">
   <el-form-item label="Total">
-     <el-input-number :min="0" v-model="form.total" label="Amount"></el-input-number>
+     <el-input style="width:180px" :min="0" v-model="form.total" label="Amount"></el-input> eos
   </el-form-item>
   <el-form-item label="Quantity">
      <el-input-number :min="1" v-model="form.qty" label="Quantity"></el-input-number>
