@@ -38,6 +38,7 @@
 </template>
 
 <script>
+import { checkTable } from '@/eos'
 export default {
   data: () => ({
     myRedPack: [
@@ -61,9 +62,15 @@ export default {
       }
     ]
   }),
+  mounted () {
+    this.fetchData()
+  },
   methods: {
     handleClick (row) {
       console.log(row)
+    },
+    async fetchData () {
+      this.myRedPack = await checkTable()
     }
   }
 }

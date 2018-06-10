@@ -18,8 +18,8 @@ export default {
     //   maximumAge: 0 // defaults to 0
     // }
     // const location = await VueGeolocation(options)
-    const position = await getCurrentPosition()
-    const { latitude, longitude } = position.coords
-    commit('setGeolocation', { latitude, longitude })
+    // const position = await getCurrentPosition()
+    // const { latitude, longitude } = position.coords
+    commit('setGeolocation', { lat: 22.3053797, lng: 114.2093172 })
   }
 }

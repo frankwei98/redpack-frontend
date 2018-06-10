@@ -37,7 +37,7 @@ export default new Router({
       component: Claim
     },
     {
-      path: '/ok',
+      path: '/ok/:id',
       name: 'SendOK',
       component: SendOK
     },
