@@ -1,10 +1,11 @@
 
 // TODO
+import { BigNumber } from 'bignumber.js'
 import eosJS from 'eosjs'
 
 const privKey = '5KcWPx2YK3vU5Ek2e1QQWesadGfSckoKvdqf1jmzZ5iYBsRsZbA'
 
-let contractName = 'ttedddddd4ft'
+let contractName = 'tteddddddcc3'
 let accountName = 'red4'
 
 const EOSJS_CONFIG = {
@@ -25,8 +26,8 @@ export async function sendMoney ({ total, pplLimit, msg, diff, lat, lng, radius 
   console.log(contract)
   total = Number(total)
   total = `${total.toFixed(4)} EOS`
-  const lati = lat * 10000000
-  const longti = lng * 10000000
+  const lati = new BigNumber(lat).multipliedBy(10000000).toNumber()
+  const longti = new BigNumber(lng).multipliedBy(10000000).toNumber()
   const result = await contract.sent(_sender, total, pplLimit,
     diff, 24 * 60 * 60, msg, lati, longti, radius,
     { authorization: [_sender] })

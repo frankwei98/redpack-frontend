@@ -11,6 +11,8 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "bignumber": "^1.1.0",
+    "bignumber.js": "^7.2.1",
     "clipboard": "^2.0.1",
     "element-ui": "^2.4.1",
     "eosjs": "^14.1.1",
